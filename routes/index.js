@@ -7,3 +7,17 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+function ifDmOrUser(){
+  if (req.user.dm){
+
+  }
+  else if(req.user){
+
+  }
+  else{
+    
+  }
+}
+
+
