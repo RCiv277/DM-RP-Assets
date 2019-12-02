@@ -5,7 +5,31 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>Player Characters</h1>
+    <% if (characters){ %>
+        <ol>
+        <ul>
+          <ls>Name</ls>
+          <ls>Class</ls>
+          <ls>Level</ls>
+          <ls>Race</ls>
+        </ul>
+      <% characters.forEach(char => { %>
+        <a href='/chars/<%= m._id %>'>
+        <ul>
+          <ls><%= char.name %></ls>
+          <ls><%= char.class %></ls>
+          <ls><%= char.level %></ls>
+          <ls><%= char.subrace %></ls>
+        </ul>
+        </a>
+  <% }) %>
+      </ol>
+<% }else { %>
+  <p>No Characters Here</p>
+<% } %>
+  <a href='/char/new'>Add a Character</a>
+  <a href='/dm'>Show Dungeon Masters</a>
+  <a href='/dm/new'>Add Dungeon Master</a>
   </body>
 </html>

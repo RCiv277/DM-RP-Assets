@@ -3,10 +3,9 @@ var router = express.Router();
 var charCTRL = require('../controllers/playerper')
 
 /* GET home page. */
-router.get('/', function(req, res, next){
-  res.redirect('/char')
-})
-
+router.get('/', charCTRL.show)
+router.get('/char', charCTRL.show)
+router.get('/char/new', charCTRL.genCreateForm)
 
 module.exports = router;
 
@@ -22,4 +21,4 @@ function ifDmOrUser(){
   }
 }
 
-console.log('route index logged')
+console.log('route char logged')

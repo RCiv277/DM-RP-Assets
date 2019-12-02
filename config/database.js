@@ -1,6 +1,6 @@
 var mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost/assets',
+mongoose.connect('mongodb://localhost/DMassets',
   { useNewUrlParser: true, 
     useCreateIndex: true , 
     useUnifiedTopology: true}
