@@ -15,12 +15,12 @@
           <ls>Race</ls>
         </ul>
       <% characters.forEach(char => { %>
-        <a href='/chars/<%= m._id %>'>
+        <a href='/char/<%= char._id %>'>
         <ul>
           <ls><%= char.name %></ls>
-          <ls><%= char.class %></ls>
+          <ls><%= char.class[0] %></ls>
           <ls><%= char.level %></ls>
-          <ls><%= char.subrace %></ls>
+          <ls><%= char.race %></ls>
         </ul>
         </a>
   <% }) %>

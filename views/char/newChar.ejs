@@ -8,13 +8,184 @@
 </head>
 <body>
     <h1>Create a Character</h1>
-    <form action='/char' method="POST">
-        <input type='text' maxlength="30" placeholder='Name'>
+    <form action='/submit' method="POST">
+        <input name='name' type='text' maxlength="30" placeholder='Name'>
         <select name='level' aria-placeholder="Lv">
-            <% for(let i = 1; i < 21;i++){%>
+            <option value='1' selected='selected'>1</option>
+            <% for(let i = 2; i < 21;i++){%>
             <option value="<%= `${i}`%>"><%= i %> </option>
             <% }%>
         </select>
+        <select name='class'>
+            <optgroup label="Artificer" name='class'>
+                <option value='Artificer/Alchemist'>Alchemist</option>
+                <option value="[Arificer , Gunsmith]">Gunsmith</option>
+                <option value="[Arificer , Battlesmith]">Battlesmith</option>
+            </optgroup>
+            <optgroup label="Barbarian" name='class'>
+                <option value="[Barbarian, Berserker]">Berserker</option>
+                <option value="Totem Warrior">Totem Warrior</option>
+                <option value="Battlerager">Battlerager</option>
+                <option value="Ancestral Guardian">Ancestral Guardian</option>
+                <option value="Storm Herald">Storm Herald</option>
+                <option value="Zeolot">Zeolot</option>
+            </optgroup>
+            <optgroup label="Bard" name='class'>
+                <option value="Lore">Lore</option>
+                <option value="Valor">Valor</option>
+                <option value="Glamour">Glamour</option>
+                <option value="Swords">Swords</option>
+                <option value="Whispers">Whispers</option>
+            </optgroup>
+            <optgroup label="Cleric" name='class'>
+                <option value="Knowledge">Knowledge</option>
+                <option value="Life">Life</option>
+                <option value="Light">Light</option>
+                <option value="Nature">Nature</option>
+                <option value="Tempest">Tempest</option>
+                <option value="Trickery">Trickery</option>
+                <option value="War">War</option>
+                <option value="Arcana">Arcana</option>
+                <option value="Forge">Forge</option>
+                <option value="Grave">Grave</option>
+                <option value="Order">Order</option>
+            </optgroup>
+            <optgroup label="Druid" name='class'>
+                <option value="Land">Land</option>
+                <option value="Moon">Moon</option>
+                <option value="Dreams">Dreams</option>
+                <option value="Shepard">Shepard</option>
+                <option value="Spores">Spores</option>
+            </optgroup>
+            <optgroup label="Fighter" name='class'>
+                <option value="Champion">Champion</option>
+                <option value="Battle Master">Battle Master</option>
+                <option value="Eldritch Knight">Eldritch Knight</option>
+                <option value="Purple Dragon Knight">Purple Dragon Knight</option>
+                <option value="Arcane Archer">Arcane Archer</option>
+                <option value="Cavalier">Cavalier</option>
+                <option value="Samurai">Samurai</option>
+            </optgroup>
+            <optgroup label="Monk" name='class'>
+                <option value="Open Hand">Open Hand</option>
+                <option value="Shadow">Shadow</option>
+                <option value="Four Elements">Four Elements</option>
+                <option value="Long Death">Long Death</option>
+                <option value="Drunken Master">Drunken Master</option>
+                <option value="Kensai">Kensai</option>
+                <option value="Sun Soul">Sun Soul</option>
+            </optgroup>
+            <optgroup label="Paladin" name='class'>
+                <option value="Devotion">Devotion</option>
+                <option value="Ancients">Ancients</option>
+                <option value="Vengeance">Vengeance</option>
+                <option value="Crown">Crown</option>
+                <option value="Conquest">Conquest</option>
+                <option value="Redemption">Redemption</option>
+            </optgroup>
+            <optgroup label="Ranger" name='class'>
+                <option value="Hunter">Hunter</option>
+                <option value="Beast Master">Beast Master</option>
+                <option value="Gloom Stalker">Gloom Stalker</option>
+                <option value="Horizon Walker">Horizon Walker</option>
+                <option value="Monster Slayer">Monster Slayer</option>
+            </optgroup>
+            <optgroup label="Rogue" name='class'>
+                <option value="Theif">Thief</option>
+                <option value="Assassin">Assassin</option>
+                <option value="Arcane Trickster">Arcane Trickster</option>
+                <option value="Swashbuckler">Swashbuckler</option>
+                <option value="Inquisitive">Inquisitive</option>
+                <option value="Mastermind">Mastermind</option>
+                <option value="Scout">Scout</option>
+            </optgroup>
+            <optgroup label="Sorceror" name='class'>
+                <option value="Draconic">Draconic</option>
+                <option value="Wild">Wild</option>
+                <option value="Divine">Divine</option>
+                <option value="Shadow">Shadow</option>
+                <option value="Storm">Storm</option>
+            </optgroup>
+            <optgroup label="Warlock" name='class'>
+                <option value="Archfey">Archfey</option>
+                <option value="Fiend">Fiend</option>
+                <option value="Great Old One">Great Old One</option>
+                <option value="Undying">Undying</option>
+                <option value="Celestial">Celestial</option>
+                <option value="Hexblade">Hexblade</option>
+            </optgroup>
+            <optgroup label="Wizard" name='class'>
+                <option value="Abjuration">Abjuration</option>
+                <option value="Conjuration">Conjuration</option>
+                <option value="Divination">Divination</option>
+                <option value="Enchantment">Enchantment</option>
+                <option value="Evocation">Evocation</option>
+                <option value="Illusion">Illusion</option>
+                <option value="Necromancy">Necromancy</option>
+                <option value="Transmutation">Transmutation</option>
+                <option value="Bladesinging">Bladesinging</option>
+                <option value="War Magic">War Magic</option>
+            </optgroup>
+        </select>
+        <input type='text' name="race" maxlength="20" placeholder="Race">
+        <input type='text' name="personality" placeholder="Personality">
+        <input type='text' name='flaws' placeholder="Flaws">
+        <select name='Feature'>
+            <option value='Acolyte'>Acolyte</option>
+            <option value='Charlatan'>Charlatan</option>
+            <option value='Criminal'>Criminal</option>
+            <option value='Spy'>Spy</option>
+            <option value='Entertainer'>Entertainer</option>
+            <option value='Gladiator'>Gladiator</option>
+            <option value='Folk Hero'>Folk Hero</option>
+            <option value='Guild Artisan'>Guild Artisan</option>
+            <option value='Hermit'>Hermit</option>
+            <option value='Noble'>Noble</option>
+            <option value='Knight'>Knight</option>
+            <option value='Outlander'>Outlander</option>
+            <option value='Sage'>Sage</option>
+            <option value='Sailor'>Sailor</option>
+            <option value='Pirate'>Pirate</option>
+            <option value='Soldier'>Soldier</option>
+            <option value='Urchin'>Urchin</option>
+            <option value='City Watch'>City Watch</option>
+            <option value='Investigator'>Investigator</option>
+            <option value='Clan Crafter'>Clan Crafter</option>
+            <option value='Sage'>Cloystered Scholar</option>
+            <option value='Courtier'>Courtier</option>
+            <option value='Faction Agent'>Faction Agent</option>
+            <option value='Far Traveler'>Far Traveler</option>
+            <option value='Inheritor'>Inheritor</option>
+            <option value='Knight of the Order'>Knight of the Order</option>
+            <option value='Mercenary Veteran'>Mercenary Veteran</option>
+            <option value='Urban Bounty Hunter'>Urban Bounty Hunter</option>
+            <option value='Uthgardt Tribe Member'>Uthgardt Tribe Member</option>
+            <option value='Waterdhavian Noble'>Waterdhavian Noble</option>
+            <option value='Azorius Functionary'>Azorius Functionary</option>
+            <option value='Boros Legionnaire'>Boros Legionnaire</option>
+            <option value='Dimir Operative'>Dimir Operative</option>
+            <option value='Golgari Agent'>Golgari Agent</option>
+            <option value='Gruul Anarch'>Gruul Anarch</option>
+            <option value='Izzet Engineer'>Izzet Engineer</option>
+            <option value='Orzhov Representative'>Orzhov Representative</option>
+            <option value='Rakdos Cultist'>Rakdos Cultist</option>
+            <option value='Selesnya Initiate'>Selesnya Initiate</option>
+            <option value='Simic Scientist'>Simic Scientist</option>
+            <option value="Celebrity Adventurer's Scion">Celebrity Adventurer's Scion</option>
+            <option value='Failed Merchant'>Failed Merchant</option>
+            <option value='Gambler'>Gambler</option>
+            <option value='Plaintiff'>Plaintiff</option>
+            <option value='Rival Intern'>Rival Intern</option>
+            <option value='Haunted One'>Haunted One</option>
+            <option value='Anthropologist'>Anthropologist</option>
+            <option value='Archaeologist'>Archaeologist</option>
+            <option value='House Agent'>House Agent</option>
+        </select>
+        <input type='text' name='appearence' placeholder="Appearence">
+        <input type='text' name='backstory' placeholder="Backstory">
+        <input type="submit" value='Create'>
     </form>
 </body>
 </html>
+
+

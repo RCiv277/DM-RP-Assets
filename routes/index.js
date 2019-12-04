@@ -9,7 +9,7 @@ router.get('/', function(req, res, next){
 
 
 module.exports = router;
-
+/*
 function ifDmOrUser(){
   if (req.user.dm){
 
@@ -22,4 +22,4 @@ function ifDmOrUser(){
   }
 }
 
-console.log('route index logged')
+console.log('route index logged')*/

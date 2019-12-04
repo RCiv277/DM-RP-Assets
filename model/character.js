@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
+var User = require('./')
 
 const characterSchema = new mongoose.Schema({
     name: {type: String , maxlength: 20, required: true},
-    class: {type: String, required:true },
+    class: {},
     specialization: {type: String},   //Default to the Class
     flaws:{type: String},
     appearence: {type: String},
@@ -12,7 +13,9 @@ const characterSchema = new mongoose.Schema({
     backstory:{type:String, default:`${this.name} does not have their backstory recorded on the site as of yet.`},
     relations: {type:String, default: 'No Recorded Faction/Npc Relations.'},
     personality:{type:String},
-    feature:{type:String}
+    feature:{type:String},
+    appearence:{type:String},
+    user:String
 })
 
 

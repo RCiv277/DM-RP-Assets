@@ -3,9 +3,11 @@ var router = express.Router();
 var charCTRL = require('../controllers/playerper')
 
 /* GET home page. */
-router.get('/', charCTRL.show)
-router.get('/char', charCTRL.show)
+router.get('/', charCTRL.showAllChars)
+router.get('/char', charCTRL.showAllChars)
 router.get('/char/new', charCTRL.genCreateForm)
+router.post('/submit', charCTRL.createChar)
+router.get('/char/:id', charCTRL.showChar)
 
 module.exports = router;
 
