@@ -19,8 +19,7 @@ passport.use(new GoogleStrategy({
         var newUser = new User({
           name: profile.displayName,
           email: profile.emails[0].value,
-          googleId: profile.id,
-          dm: false
+          googleId: profile.id
         });
         newUser.save(function(err) {
           if (err) return cb(err);
@@ -35,7 +34,7 @@ passport.use(new GoogleStrategy({
   });
   
   passport.deserializeUser(function(id, done) {
-    Student.findById(id, function(err, user) {
+    User.findById(id, function(err, user) {
       done(err, user);
     });
   });

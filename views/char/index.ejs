@@ -6,6 +6,11 @@
   </head>
   <body>
     <h1>Player Characters</h1>
+    <% if (loggedIn) { %>
+      <a href="/logout"><i class="material-icons left"></i>Log Out</a>
+    <% } else { %>
+      <a href="/auth/google"><i class="material-icons left"></i>Login with Google</a>
+    <% } %>
     <% if (characters){ %>
         <ol>
         <ul>
@@ -18,7 +23,7 @@
         <a href='/char/<%= char._id %>'>
         <ul>
           <ls><%= char.name %></ls>
-          <ls><%= char.class[0] %></ls>
+          <ls><%= char.class %></ls>
           <ls><%= char.level %></ls>
           <ls><%= char.race %></ls>
         </ul>

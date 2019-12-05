@@ -7,6 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <%if(dm){%>
+    <%dm.forEach(idx => {%>
+        <h3><%= idx.name%></h3>
+        <p><%= idx.valueone%></p>
+        <p><%= idx.valuetwo%></p>
+        <p><%= idx.valuethree%></p>
+    <%})%>
+    <%} else {%>
+        <h3>No DM information available</h3>
+    <%}%>
+    <a href='/'>All Characters</a>
+    <a href='/char/new'>Add a Character</a>
+    <a href='/dm/new'>Add Dungeon Master</a>
 </body>
 </html>

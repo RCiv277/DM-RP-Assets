@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-var User = require('./')
+const User = require('./user')
 
 const characterSchema = new mongoose.Schema({
     name: {type: String , maxlength: 20, required: true},
@@ -15,7 +15,7 @@ const characterSchema = new mongoose.Schema({
     personality:{type:String},
     feature:{type:String},
     appearence:{type:String},
-    user:String
+    owner: {}
 })
 
 

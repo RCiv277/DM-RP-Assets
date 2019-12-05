@@ -1,8 +1,69 @@
-const DungeonMasters = require('../model/dm')
+const DM = require('../model/dm')
+const User = require('../model/user')
 
 module.exports = {
-    index,
-    newDM,
-    editValues
+    showAllDms,
+    dmForm,
+    editValues,
+    upgradeToDm,
+    newDmForm,
+    generateTheDm
+}
+function dmForm(req, res){          //  /dm/new
+    if(!req.user.dm){
+        res.render('dms/dmCode')
+    }
+    else{
+        res.redirect('/dm')
+    }
 }
 
+function upgradeToDm(req, res){   
+    console.log(req.body.password +  '-----------0/')
+    if(Object.is(req.body.password,'Zacisthec00lest')){
+        User.findById(req.user._id , function(err, dm){
+            dm.dm = true
+            dm.save()
+
+        })   
+        console.log(req.user)
+        res.redirect('/dm/create')
+    }
+    else{
+        res.redirect('/dm')
+    }
+} 
+/*
+function upgradeToDm(req, res){
+    console.log(req.body)
+    res.redirect('/dm')
+} 
+*/
+function showAllDms(req, res){         // /dm
+    DM.find({}, function(err, dm){
+        if (err) console.log(err)
+        res.render('dms/dmIndex', {dm})
+    })
+} 
+
+function newDmForm(req, res){
+    res.render('dms/dmNew')
+}
+
+function generateTheDm(req, res){
+  req.body.owner = req.user
+  let createdDm = new DM(req.body);
+  DM.create(createdDm, function(err) {
+    if (err) {
+      console.log(err)
+      res.redirect('/')
+      return}
+    else{//send the error to the browser
+    res.redirect('/char')
+    }
+  })
+}
+
+function editValues(){
+
+}
