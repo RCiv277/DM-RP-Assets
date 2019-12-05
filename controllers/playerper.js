@@ -21,7 +21,7 @@ function showChar(req, res){
             })
         }
         else if(req.user.dm){
-            res.render('dms/dmChar')
+            res.render('dms/dmChar', {char })
         }
         else{
         res.render('char/othersChar', {
