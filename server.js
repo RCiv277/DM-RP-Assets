@@ -6,6 +6,7 @@ var logger = require('morgan');
 var session = require('express-session')
 var passport = require('passport')
 var app = express();
+const methodOverride = require('method-override')
 
 require('dotenv').config()
 require('./config/database')
@@ -19,6 +20,7 @@ var charRouter = require('./routes/char');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 app.use(cookieParser());

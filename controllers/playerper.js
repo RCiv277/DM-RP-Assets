@@ -6,7 +6,8 @@ module.exports = {
     genCreateForm,
     createChar,
     showChar,
-    editCharForm
+    editCharForm,
+    editChar
 }
 /*    newChar,
     editChar,
@@ -72,3 +73,13 @@ function editCharForm(req, res){
         res.render('char/playerCharEdit', {char})
     })
 }
+
+function editChar(req, res){
+    Character.findOneAndUpdate(req.params.id, req.body, {new:true}, function(err, char){
+        if(err)console.log(err)
+        char.save()
+        console.log(char)
+        res.redirect(`/char/${req.params.id}`)
+    })
+}
+
