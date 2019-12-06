@@ -33,12 +33,17 @@ router.get('/char', charCTRL.showAllChars)
 router.get('/char/new', charCTRL.genCreateForm)
 router.post('/submit', charCTRL.createChar)
 router.get('/char/:id', charCTRL.showChar)
+router.get('/char/:id/edit', charCTRL.editCharForm)
 router.get('/dm', dmCTRL.showAllDms)
 router.get('/dm/new', dmCTRL.dmForm)
 router.post('/dm/yo', dmCTRL.upgradeToDm)
 router.get('/dm/yo', dmCTRL.upgradeToDm)
 router.get('/dm/create', dmCTRL.newDmForm)
 router.post('/dmsubmit', dmCTRL.generateTheDm)
+router.get('/dmedit', function(req, res){
+  console.log('Hi-----------------0/')
+  res.redirect('/')
+})
 
 module.exports = router;
 

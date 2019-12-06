@@ -35,6 +35,16 @@
 <% } %>
   <a href='/char/new'>Add a Character</a>
   <a href='/dm'>Show Dungeon Masters</a>
+  <% console.log(user)%>
+  <% try{%>
+  <% if(user.dm){ %>
+  <a href='/dmedit'>Edit Values</a>
+  <%}%>
+  <% if(!user.dm){%>
   <a href='/dm/new'>Add Dungeon Master</a>
+  <%}%>
+  <% } catch(e){ %>
+  <a href='/dm/new'>Add Dungeon Master</a>
+  <% } %>
   </body>
 </html>

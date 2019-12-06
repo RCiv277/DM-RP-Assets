@@ -5,20 +5,20 @@ module.exports = {
     showAllChars,
     genCreateForm,
     createChar,
-    showChar
+    showChar,
+    editCharForm
 }
 /*    newChar,
     editChar,
     editLevel */
 function showChar(req, res){
     Character.findById(req.params.id, function(err, char){
-        let o = JSON.stringify(char.owner) 
-        let t = JSON.stringify(req.user) 
+        let o = JSON.stringify(char.owner._id) 
+        let t = JSON.stringify(req.user._id) 
+        
         if(Object.is(o,t)){
-            console.log('the same')
             res.render('char/usersChar', {
-                char
-            })
+                char})
         }
         else if(req.user.dm){
             res.render('dms/dmChar', {char })
@@ -32,8 +32,6 @@ function showChar(req, res){
 
 function showAllChars(req, res){
     let sortKey = req.query.sort || 'name'
-    console.log('Showing Char Index')
-    console.log(req.isAuthenticated())
     Character.find({}, function(err, characters){
         if (err) console.log(err)
         res.render('char/index', {
@@ -56,9 +54,7 @@ function genCreateForm(req, res){
     })
 } */
 function createChar(req, res) {
-    console.log(req.body)
     req.body.owner = req.user
-    console.log(req.body.name + '-------------------------------')
     let createdChar = new Character(req.body);
     Character.create(createdChar, function(err) {
       if (err) {
@@ -70,6 +66,9 @@ function createChar(req, res) {
       }
     });
   }
-console.log('controller playerper logged')
 
-
+function editCharForm(req, res){
+    Character.findById(req.params.id, function(err, char){
+        res.render('char/playerCharEdit', {char})
+    })
+}

@@ -7,6 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    This is mine
+    <h1><%= char.name %></h1>
+    <p><%= char.level %></p>
+    <p><%= char.class %></p>
+    <p><%= char.personality %></p>
+    <p><%= char.appearance %></p>
+    <p><%= char.flaws %></p>
+    <p><%= char.race %></p>
+    <p><%= char.backstory %></p>
+    <a href='/char/<%= char._id %>/edit'>EDIT</a>
+    <a href='/'>All Characters</a>
+    <a href='/char/new'>Add a Character</a>
+    <a href='/dm'>Show Dungeon Masters</a>
+    <a href='/dm/new'>Add Dungeon Master</a>
 </body>
 </html>

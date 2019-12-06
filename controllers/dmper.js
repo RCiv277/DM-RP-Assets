@@ -19,14 +19,12 @@ function dmForm(req, res){          //  /dm/new
 }
 
 function upgradeToDm(req, res){   
-    console.log(req.body.password +  '-----------0/')
     if(Object.is(req.body.password,'Zacisthec00lest')){
         User.findById(req.user._id , function(err, dm){
             dm.dm = true
             dm.save()
 
         })   
-        console.log(req.user)
         res.redirect('/dm/create')
     }
     else{
