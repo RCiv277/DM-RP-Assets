@@ -190,6 +190,21 @@
         <input type='text' name='appearence' value="<%=char.appearence%>">
         <input type='text' name='backstory' value="<%=char.backstory%>">
         <input type="submit" value='Confirm Edit'>
+        <% try{ %>
+        <%if(user.dm || !user.dm){%>
+        <a href='/char/new'>Add a Character</a>
+        <%}} catch(e) {} %>
+        <a href='/dm'>Show Dungeon Masters</a>
+        <% console.log(user)%>
+        <% try{%>
+        <% if(user.dm){ %>
+        <a href='/dmedit'>Edit Values</a>
+        <%}%>
+        <% if(!user.dm){%>
+        <a href='/dm/new'>Add Dungeon Master</a>
+        <%}%>
+        <% } catch(e){ %>
+        <% } %>
     </form>
 </body>
 </html>

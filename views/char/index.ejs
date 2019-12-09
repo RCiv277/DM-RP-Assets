@@ -33,7 +33,10 @@
 <% }else { %>
   <p>No Characters Here</p>
 <% } %>
+  <% try{ %>
+  <%if(user.dm || !user.dm){%>
   <a href='/char/new'>Add a Character</a>
+  <%}} catch(e) {} %>
   <a href='/dm'>Show Dungeon Masters</a>
   <% console.log(user)%>
   <% try{%>
@@ -44,7 +47,6 @@
   <a href='/dm/new'>Add Dungeon Master</a>
   <%}%>
   <% } catch(e){ %>
-  <a href='/dm/new'>Add Dungeon Master</a>
   <% } %>
   </body>
 </html>

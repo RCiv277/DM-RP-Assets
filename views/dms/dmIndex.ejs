@@ -18,7 +18,9 @@
         <h3>No DM information available</h3>
     <%}%>
     <a href='/'>All Characters</a>
+    <% try{ if(user.dm || !user.dm){ %>
     <a href='/char/new'>Add a Character</a>
     <a href='/dm/new'>Add Dungeon Master</a>
+    <% }} catch(e){}%>
 </body>
 </html>

@@ -16,7 +16,16 @@
     <p><%= char.appearance %></p>
     <p><%= char.relations %></p>
     <a href='/'>All Characters</a>
-    <a href='/char/new'>Add a Character</a>
     <a href='/dm'>Show Dungeon Masters</a>
+    <% console.log(user)%>
+    <% try{%>
+    <% if(user.dm){ %>
+    <a href='/dmedit'>Edit Values</a>
+    <%}%>
+    <% if(!user.dm){%>
+    <a href='/dm/new'>Add Dungeon Master</a>
+    <%}%>
+    <% } catch(e){ %>
+    <% } %>
 </body>
 </html>

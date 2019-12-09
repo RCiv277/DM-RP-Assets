@@ -185,6 +185,16 @@
         <input type='text' name='backstory' placeholder="Backstory">
         <input type="submit" value='Create'>
     </form>
+        <a href='/dm'>Show Dungeon Masters</a>
+        <% try{%>
+        <% if(user.dm){ %>
+        <a href='/dmedit'>Edit Values</a>
+        <%}%>
+        <% if(!user.dm){%>
+        <a href='/dm/new'>Add Dungeon Master</a>
+        <%}%>
+        <% } catch(e){ %>
+        <% } %>
 </body>
 </html>
 

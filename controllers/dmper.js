@@ -40,12 +40,20 @@ function upgradeToDm(req, res){
 function showAllDms(req, res){         // /dm
     DM.find({}, function(err, dm){
         if (err) console.log(err)
-        res.render('dms/dmIndex', {dm})
+        res.render('dms/dmIndex', {
+            dm,
+            user:req.User})
     })
 } 
 
 function newDmForm(req, res){
-    res.render('dms/dmNew')
+    try{
+        if(!req.user.dm){
+            res.render('dms/dmNew')
+        }
+    } catch {
+        res.redirect('/')
+    }
 }
 
 function generateTheDm(req, res){

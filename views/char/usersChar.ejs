@@ -17,8 +17,19 @@
     <p><%= char.backstory %></p>
     <a href='/char/<%= char._id %>/edit'>EDIT</a>
     <a href='/'>All Characters</a>
+    <% try{ %>
+    <%if(user.dm || !user.dm){%>
     <a href='/char/new'>Add a Character</a>
+    <%}} catch(e) {} %>
     <a href='/dm'>Show Dungeon Masters</a>
+    <% try{%>
+    <% if(user.dm){ %>
+    <a href='/dmedit'>Edit Values</a>
+    <%}%>
+    <% if(!user.dm){%>
     <a href='/dm/new'>Add Dungeon Master</a>
+    <%}%>
+    <% } catch(e){ %>
+    <% } %>
 </body>
 </html>

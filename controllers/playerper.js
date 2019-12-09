@@ -1,6 +1,5 @@
 const Character = require('../model/character')
 const User = require('../model/user')
-
 module.exports = {
     showAllChars,
     genCreateForm,
@@ -14,19 +13,30 @@ module.exports = {
     editLevel */
 function showChar(req, res){
     Character.findById(req.params.id, function(err, char){
-        let o = JSON.stringify(char.owner._id) 
-        let t = JSON.stringify(req.user._id) 
-        
+        let o = '1'
+        let t = '2'
+        try{
+        o = JSON.stringify(char.owner._id) 
+        t = JSON.stringify(req.user._id) 
+        }catch{ 
+        res.render('char/othersChar',{
+            char
+        })
+        return;}
         if(Object.is(o,t)){
             res.render('char/usersChar', {
-                char})
+                char,
+                user:req.user})
         }
         else if(req.user.dm){
-            res.render('dms/dmChar', {char })
+            res.render('dms/dmChar', {
+                char,
+                user:req.user })
         }
         else{
         res.render('char/othersChar', {
-          char
+          char,
+          user:req.user
         })}
     })
 }
@@ -45,15 +55,12 @@ function showAllChars(req, res){
     })
 }
 function genCreateForm(req, res){
-    res.render('char/newChar')
+    try{
+    if(req.user.dm || !req.user.dm){
+    res.render('char/newChar')}}
+    catch{res.redirect('/')}
 }
-/*function createChar(req, res, next){
-    Character.create(req.body, function(err, characters){
-        characters.save(()=>{
-        res.redirect('/')}
-        )
-    })
-} */
+
 function createChar(req, res) {
     req.body.owner = req.user
     let createdChar = new Character(req.body);
@@ -69,17 +76,25 @@ function createChar(req, res) {
   }
 
 function editCharForm(req, res){
+    
     Character.findById(req.params.id, function(err, char){
-        res.render('char/playerCharEdit', {char})
+        try{
+        let t = JSON.stringify(req.user._id) 
+        let o = JSON.stringify(char.owner._id) 
+        } catch{ let t = ''}
+            if(Object.is(o,t)){
+        res.render('char/playerCharEdit', {char,
+        user:req.user})}
+            else{
+                res.redirect('/')
+            }
     })
 }
 
 function editChar(req, res){
-    Character.findOneAndUpdate(req.params.id, req.body, {new:true}, function(err, char){
-        if(err)console.log(err)
-        char.save()
-        console.log(char)
-        res.redirect(`/char/${req.params.id}`)
-    })
+    Character.findOneAndUpdate({_id: req.params.id}, req.body, {returnOriginal:false}, function(err, char){
+    res.redirect(`/char`)
+})
 }
+
 
