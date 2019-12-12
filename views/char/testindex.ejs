@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/teststyle.css' />
+  </head>
+  <body>
+  <div class='navbar'>
+    <div class='menu'>
+    <p>Menu</p>
+    <img id="navmenu">
+    </div>
+    <p>Player Characters</p>
+  </div>
+    <% if (characters){ %>
+        <ol>
+        <ul>
+          <ls>Name</ls>
+          <ls>Class</ls>
+          <ls>Level</ls>
+          <ls>Race</ls>
+        </ul>
+      <% characters.forEach(char => { %>
+        <a href='/char/<%= char._id %>'>
+        <ul>
+          <ls><%= char.name %></ls>
+          <ls><%= char.class %></ls>
+          <ls><%= char.level %></ls>
+          <ls><%= char.race %></ls>
+        </ul>
+        </a>
+  <% }) %>
+      </ol>
+<% }else { %>
+  <p>No Characters Here</p>
+<% } %>
+  <% try{ %>
+  <%if(user.dm || !user.dm){%>
+  <a href='/char/new'>Add a Character</a>
+  <%}} catch(e) {} %>
+  <a href='/dm'>Show Dungeon Masters</a>
+  <% console.log(user)%>
+  <% try{%>
+  <% if(user.dm){ %>
+  <a href='/dmedit'>Edit Values</a>
+  <%}%>
+  <% if(!user.dm){%>
+  <a href='/dm/new'>Add Dungeon Master</a>
+  <%}%>
+  <% } catch(e){ %>
+  <% } %>
+  </body>
+</html>

@@ -45,7 +45,7 @@ function showAllChars(req, res){
     let sortKey = req.query.sort || 'name'
     Character.find({}, function(err, characters){
         if (err) console.log(err)
-        res.render('char/index', {
+        res.render('char/testindex', {   // Testing Document Active ______________________________________++++_________________
         title: 'Characters', 
         characters,
         loggedIn: req.isAuthenticated(),
