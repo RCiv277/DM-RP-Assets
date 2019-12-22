@@ -8,7 +8,7 @@ const characterSchema = new mongoose.Schema({
     flaws:{type: String},
     appearence: {type: String},
     level: {type: Number, min: 1, max:20},
-    race: {type:String},
+    race: {type:String ,maxlength: 10},
     subrace:{type: String},
     backstory:{type:String, default:`${this.name} does not have their backstory recorded on the site as of yet.`},
     relations: {type:String, default: 'No Recorded Faction/Npc Relations.'},

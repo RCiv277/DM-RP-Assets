@@ -1,6 +1,6 @@
 body {
     padding: 0px;
-    font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 30px "Lucida Grande", Helvetica, Arial, sans-serif;
     display: block;
     position: relative;
     background-color: rgb(139, 0, 0);
@@ -8,15 +8,17 @@ body {
     margin: 0px;
 }
 header {
-      background-color: rgb(105, 0, 0);
-      width:100%;
-      display: inline-block;
-      color: silver;
-      font-size: 30px;
-      padding-bottom: 28px;
+    background-color: rgb(105, 0, 0);
+    width:100%;
+    display: inline-block;
+    color: silver;
+    font-size: 30px;
+    padding-bottom: 28px;
     }
     a {
-        font-size: 16px;
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(170, 170, 170);
     }
     p{
         display: inline;
@@ -32,18 +34,23 @@ header {
         top: 15px;
         margin-left: 5px;
     }
+
+    ls{
+        font-size:20px;
+    }
     ol , ul{
-        padding-left: 0px;
+        padding: 0px;
+        margin-top: 0px;
     }
     #table-header , .table-content {
-        grid-template-columns: 30% 25% 20% 25% ;
+        grid-template-columns: 50% 20% 10% 20% ;
         display: grid;
         width: 100%;
     }
     #title{
         text-align: center;
         margin: 0px;
-        top: 25%;
+        top: 35px;
         position: absolute;
         margin-left: 2%;
     }
@@ -51,7 +58,7 @@ header {
     #login{
         text-align: right;
         float: right;
-        top: 25%;
+        top: 35px;
         right: 5%;
         font-size: 30px;
         position: absolute;
@@ -60,3 +67,4 @@ header {
     .navbar{
         display:none;
     }
+    
