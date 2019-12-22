@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/teststyle.css' />
+    <title>Characters</title>
+    <link rel='stylesheet' href='../../public/stylesheets/teststyle.css'>
   </head>
   <body>
   <header>
-    
-    <div class='navbar'>
-      <div class='menu'>
-        <p>Menu</p>
-        <img id="navmenu">
-      </div>
-      <p>Player Characters</p>
-    </div>
+    <img id='nav-button' src="../../public/images/shippp.png" >
+    <p id='title'>Player Characters</p>
+    <a href="/auth/google" id="login">Login</a>
   </header>
-        <ol>
-        <ul>
+    <div class='navbar'>
+        <a href='/char/new'>Add a Character</a> 
+        <a href='/dm'>Show Dungeon Masters</a>  
+        <a href='/dmedit'>Edit Values</a>       
+        <a href='/dm/new'>Add Dungeon Master</a>
+    </div>
+  <ol>
+        <ul id="table-header">
           <ls>Name</ls>
           <ls>Class</ls>
           <ls>Level</ls>
           <ls>Race</ls>
         </ul>
         <a href='/char/<%= char._id %>'>
-        <ul>
+        <ul class='table-content'>
           <ls>char.name</ls>
           <ls>char.class</ls>
           <ls>20</ls>
@@ -31,9 +32,9 @@
         </ul>
         </a>
       </ol>
-  <a href='/char/new'>Add a Character</a>
-  <a href='/dm'>Show Dungeon Masters</a>
-  <a href='/dmedit'>Edit Values</a>
-  <a href='/dm/new'>Add Dungeon Master</a>
+
+
+
+      <script src="./Java/Main.js"></script>
   </body>
 </html>
